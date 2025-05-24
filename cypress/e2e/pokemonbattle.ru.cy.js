@@ -2,12 +2,14 @@ describe('Битва покемонов', function () {
 
     it('Покупка нового аватара', function () {
          cy.visit('https://pokemonbattle.ru');
-         cy.get('#k_email').type('go-rillaz@mail.ru');
-         cy.get('#k_password').type('Zadnizza1');
+         cy.get('#k_email').type(cred.login);
+         cy.get('#k_password').type(cred.password);
          cy.get('.MuiButton-root').click();
+         cy.wait(1000);
          cy.get('.header_card_trainer').click();
          cy.get('.k_mobile > :nth-child(5)').click();
          cy.get('.available > .shop__button').first().click();
+         cy.wait(1000);
          cy.get('.payment_form_card_form > :nth-child(2) > .style_1_base_input').type('4111 1111 1111 1111');
          cy.get(':nth-child(1) > .style_1_base_input').type('12/34');
          cy.get('.payment_form_card_form_inputs > :nth-child(2) > .style_1_base_input').type('125');
